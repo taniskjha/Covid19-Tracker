@@ -35,19 +35,19 @@ function BB() {
                             <tr>
 
                                 <td>
-                                    {coronas.map(corona => <p key={corona.CountryCode}>{corona.Country} </p>)}
+                                    {coronas.map(corona => <p style={{ color: 'black' }} key={corona.CountryCode}>{corona.Country} </p>)}
                                 </td>
 
 
 
-                                <td> {coronas.map(corona => <p key={corona.CountryCode}>{corona.TotalConfirmed}</p>)}
+                                <td> {coronas.map(corona => <p style={{ color: 'black' }} key={corona.CountryCode}>{corona.TotalConfirmed}</p>)}
                                 </td>
 
 
-                                <td> {coronas.map(corona => <p key={corona.CountryCode}>{corona.TotalDeaths}</p>)}
+                                <td> {coronas.map(corona => <p style={{ color: 'red' }} key={corona.CountryCode}>{corona.TotalDeaths}</p>)}
                                 </td>
 
-                                <td>   {coronas.map(corona => <p key={corona.CountryCode}>{corona.TotalRecovered}</p>)}
+                                <td>   {coronas.map(corona => <p style={{ color: 'blue' }} key={corona.CountryCode}>{corona.TotalRecovered}</p>)}
                                 </td>
 
 
