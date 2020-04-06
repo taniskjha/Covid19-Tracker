@@ -15,15 +15,15 @@ function BB() {
     return (
         <div >
             <div>
-                <div class="col-xl-12 col-lg-12">
-                    <div class="card shadow mb-4" id="table-card">
+                <div className="col-xl-12 col-lg-12">
+                    <div className="card shadow mb-4" id="table-card">
 
-                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"></div>
+                        <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between"></div>
 
 
 
-                        <table class="table table-striped table-bordered table-hover" id="country-detail">
-                            <thead class="thead bg-warning">
+                        <table className="table table-striped table-bordered table-hover" id="country-detail">
+                            <thead className="thead bg-warning">
                                 <tr>
                                     <th scope="col">Countries</th>
                                     <th scope="col">Confirmed Cases</th>
@@ -31,10 +31,11 @@ function BB() {
                                     <th scope="col">Total Recovered</th>
                                 </tr>
                             </thead>
+
                             <tr>
 
                                 <td>
-                                    {coronas.map(corona => <strong> <p key={corona.CountryCode}>{corona.Country} </p> </strong>)}
+                                    {coronas.map(corona => <p key={corona.CountryCode}>{corona.Country} </p>)}
                                 </td>
 
 
