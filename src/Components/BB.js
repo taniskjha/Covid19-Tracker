@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../App.css'
-import App from '../App'
-import PropTypes from 'prop-types'
+import BBitem from './BBitem'
 
 function BB() {
     const [coronas, setCoronas] = useState([])
 
+
     useEffect(() => {
-        axios.get('https://api.covid19api.com/summary')
-            .then(res => { setCoronas(res.data.Countries) })
-            .catch((err) => { console.log(err) })
-    })
+        const getData = async () => {
+            const res = await axios.get('https://api.covid19api.com/summary');
+            setCoronas(res.data.Countries)
+        }
+        getData();
+    }, [])
+
     return (
         <div >
             <div>
                 <div className="col-xl-12 col-lg-12">
                     <div className="card shadow mb-4" id="table-card">
-
-                        <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between"></div>
-
-
 
                         <table className="table table-striped table-bordered table-hover" id="country-detail">
                             <thead className="thead bg-warning">
@@ -31,34 +30,16 @@ function BB() {
                                     <th scope="col">Total Recovered</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                {coronas.map(corona => (
+                                    <BBitem key={corona.CountryCode} corona={corona} />
 
-                            <tr>
-
-                                <td>
-                                    {coronas.map(corona => <p style={{ color: 'black' }} key={corona.CountryCode}>{corona.Country} </p>)}
-                                </td>
-
-
-
-                                <td> {coronas.map(corona => <p style={{ color: 'black' }} key={corona.CountryCode}>{corona.TotalConfirmed}</p>)}
-                                </td>
-
-
-                                <td> {coronas.map(corona => <p style={{ color: 'red' }} key={corona.CountryCode}>{corona.TotalDeaths}</p>)}
-                                </td>
-
-                                <td>   {coronas.map(corona => <p style={{ color: 'blue' }} key={corona.CountryCode}>{corona.TotalRecovered}</p>)}
-                                </td>
-
-
-                            </tr>
-
+                                ))}
+                            </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }
