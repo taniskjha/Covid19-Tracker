@@ -1,29 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import axios from 'axios'
 
 import Navbar from './Components/Navbar';
-import BB from './Components/BB'
+import BB from './Components/BB';
+
+import CoronaState from './Components/Context/CoronaState';
 
 function App() {
-
-    const [coronas, setCoronas] = useState([])
-
-    useEffect(() => {
-        const getData = async () => {
-            const res = await axios.get('https://api.covid19api.com/summary');
-            setCoronas(res.data.Countries)
-        }
-        getData();
-    }, [])
-
-    return (
-        < div className='container'>
-            <Navbar />
-            <BB coronas={coronas} />
-
-        </div >
-    );
+	return (
+		<CoronaState>
+			<div className="container">
+				<Navbar />
+				<BB />
+			</div>
+		</CoronaState>
+	);
 }
 
 export default App;
